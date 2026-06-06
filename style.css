@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -5,84 +7,111 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  /* 심미성을 위한 부드러운 그라데이션 배경색 */
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  
+  
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #dbeafe 100%);
+  
   color: #333;
   min-height: 100vh;
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* 헤더 스타일링 */
 .main-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .main-header h1 {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   font-weight: 800;
-  color: #1a202c;
-  letter-spacing: -0.05em;
-  margin-bottom: 8px;
+  /* 텍스트에 그라데이션 포인트 컬러 적용 */
+  background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
 }
 
 .main-header p {
-  font-size: 1rem;
-  color: #718096;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #64748b;
+  letter-spacing: -0.01em;
 }
 
+/* 학번/이름 영역 스타일링 */
+.main-header .user-info {
+  margin-top: 16px;
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4f46e5;
+  background: rgba(79, 70, 229, 0.08); 
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+}
+
+/* 2행 2열 그리드 구조 설정 */
 #projects {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  
-  max-width: 1300px; 
-  
+  max-width: 1340px; 
   margin: 0 auto;    
-  
-  gap: 24px; 
-  
+  gap: 32px; 
   justify-items: center;
   align-items: center;
 }
 
-/* 각 과제를 감싸는 카드 디자인 */
+/* 각 과제를 감싸는 카드 디자인 업그레이드 */
 .card {
   background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  padding: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* 마우스를 올렸을 때 살짝 떠오르는 심미적 인터랙션 효과 */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.card-info {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #4a5568;
-  margin-bottom: 12px;
-  padding-left: 4px;
-  border-left: 3px solid #4f46e5; /* 포인트 컬러 바 */
-}
-
-#projects .cell {
-  width: 600px;         /* 과제 크기 600에 맞춤 */
-  height: 400px;        /* 과제 크기 400에 맞춤 */
+  border-radius: 24px; 
   
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.02), 
+    0 10px 20px -3px rgba(15, 23, 42, 0.05);
+  padding: 24px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  width: max-content;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* 마우스를 올렸을 때 탄성 인터랙션 */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 25px -5px rgba(15, 23, 42, 0.08), 
+    0 10px 10px -5px rgba(15, 23, 42, 0.04);
+}
+
+/* 과제 타이틀 바 */
+.card-info {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+  padding-left: 6px;
+  border-left: 4px solid #4f46e5; 
+}
+
+/* iframe을 담는 셀 구조 \ */
+#projects .cell {
+  width: 600px;         
+  height: 400px;        
   position: relative;
   overflow: hidden;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  background: #fafafa;
+  border-radius: 14px;
+  background: #f8fafc;
 }
 
 /* iframe 자체 축소 비율 */
@@ -90,23 +119,32 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  
-  width: 1200px;        /* 600의 정확히 2배 */
-  height: 800px;        /* 400의 정확히 2배 */
-  
+  width: 600px;  
+  height: 400px; 
   border: none;
+}
+
+/* 각 카드 하단 코멘트 스타일링 */
+.card-desc {
+  margin-top: 18px;         
+  font-size: 0.9rem;       
+  line-height: 1.6;         
+  color: #475569; 
+  padding: 0 4px;         
+  max-width: 600px;         
+  word-break: keep-all;     
 }
 
 /* 푸터 스타일링 */
 .main-footer {
   margin-top: auto;
-  padding-top: 40px;
+  padding-top: 60px;
   font-size: 0.85rem;
-  color: #a0aec0;
+  color: #94a3b8;
 }
 
 /* 화면이 좁아질 때를 위한 반응형 레이아웃 처리 */
-@media (max-width: 650px) {
+@media (max-width: 1300px) {
   #projects {
     grid-template-columns: 1fr;
   }
